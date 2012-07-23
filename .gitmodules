@@ -4,3 +4,9 @@
 [submodule "lib/haskell-mode"]
 	path = lib/haskell-mode
 	url = git://github.com/haskell/haskell-mode.git
+[submodule "lib/slime"]
+	path = lib/slime
+	url = git://github.com/technomancy/slime.git
+[submodule "lib/swank-clojure"]
+	path = lib/swank-clojure
+	url = git://github.com/technomancy/swank-clojure.git
