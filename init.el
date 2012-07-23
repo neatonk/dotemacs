@@ -7,6 +7,10 @@
 ;; Don't use tabs by default
 (setq-default indent-tabs-mode nil)
 
+;; Use Emacs 24 color themes
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'zenburn t)
+
 ;;;;;;;;;;;;;;;;;;;;
 ;; NixOS Settings ;;
 ;;;;;;;;;;;;;;;;;;;;
