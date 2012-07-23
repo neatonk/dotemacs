@@ -1,12 +1,16 @@
 [submodule "lib/clojure-mode"]
 	path = lib/clojure-mode
 	url = git://github.com/technomancy/clojure-mode.git
+	ignore = untracked
 [submodule "lib/haskell-mode"]
 	path = lib/haskell-mode
 	url = git://github.com/haskell/haskell-mode.git
+	ignore = untracked
 [submodule "lib/slime"]
 	path = lib/slime
 	url = git://github.com/technomancy/slime.git
+	ignore = untracked
 [submodule "lib/swank-clojure"]
 	path = lib/swank-clojure
 	url = git://github.com/technomancy/swank-clojure.git
+	ignore = untracked
