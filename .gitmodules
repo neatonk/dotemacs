@@ -18,3 +18,6 @@
 	path = lib/paredit
 	url = git://github.com/emacsmirror/paredit.git
 	ignore = untracked
+[submodule "lib/auto-complete"]
+	path = lib/auto-complete
+	url = git://github.com/m2ym/auto-complete.git
