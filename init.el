@@ -1,23 +1,38 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Helper Functions
+;; Load Path
 
-;; path
+(defun add-to-load-path (p)
+  "Add 'p' to the load-path."
+  (add-to-list 'load-path p))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defun root-path (&optional p)
   "Resolve path relative to the user-emacs-directory."
   (concat user-emacs-directory (or p "")))
+
+(defun add-root (p)
+  "Add a relative directory to the load path."
+  (add-to-load-path (root-path p)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun lib-path (&optional p)
   "Resolve path relative to 'lib/'."
   (root-path (concat "lib/" (or p ""))))
 
+(defun add-lib (p)
+  "Add a relative lib directory to the load path"
+  (add-to-load-path (lib-path p)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Configuration Files
+
 (defun config-path (&optional p)
   "Resolve path relative to 'config/'."
   (root-path (concat "config/" (or p ""))))
-
-;; load
-(defun load-lib (p)
-  "Load a file relative to the lib dir."
-  (load (lib-path p)))
 
 (defun load-config (p)
   "Load a file relative the config dir. If 'p' is a directory
@@ -27,28 +42,7 @@
               (concat p "/init.el")
               p))))
 
-;; load path
-(defun add-path (p)
-  "Add 'p' to the load-path list."
-  (add-to-list 'load-path p))
-
-(defun add-root-path (p)
-  "Add a relative directory to the load path."
-  (add-path (root-path p)))
-
-(defun add-lib-path (p)
-  "Add a relative lib directory to the load path"
-  (add-root-path (concat "lib/" p)))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Load Path
-
-(add-root-path "lib")    ;; submodules live here.
-(add-root-path "themes") ;; for dynamic themes like solarized.el
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Configuration Files
-
+;; load some config files...
 (load-config "auto-complete-conf.el")
 (load-config "clojure-conf.el")
 (load-config "haskell-conf.el")
