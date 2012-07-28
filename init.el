@@ -1,90 +1,62 @@
-;;;;;;;;;;;;;;;;;;;;;
-;; Personalization ;;
-;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Helper Functions
 
-;; add lib and themes to load-path...
-(add-to-list 'load-path "~/.emacs.d/lib")
-(add-to-list 'load-path "~/.emacs.d/themes")
+;; path
+(defun root-path (&optional p)
+  "Resolve path relative to the user-emacs-directory."
+  (concat user-emacs-directory (or p "")))
 
-;; save space...
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+(defun lib-path (&optional p)
+  "Resolve path relative to 'lib/'."
+  (root-path (concat "lib/" (or p ""))))
 
-;; no beep...
-(setq visible-bell t)
+(defun config-path (&optional p)
+  "Resolve path relative to 'config/'."
+  (root-path (concat "config/" (or p ""))))
 
-;; no splash screen...
-(setq inhibit-splash-screen t)
+;; load
+(defun load-lib (p)
+  "Load a file relative to the lib dir."
+  (load (lib-path p)))
 
-;; by the numbers...
-(linum-mode 1)
-(line-number-mode 1)
-(column-number-mode 1)
+(defun load-config (p)
+  "Load a file relative the config dir. If 'p' is a directory
+  name, then 'p/init.el' will be loaded."
+  (let ((p (config-path p)))
+    (load (if (file-directory-p p) 
+              (concat p "/init.el")
+              p))))
 
-(global-font-lock-mode)
+;; load path
+(defun add-path (p)
+  "Add 'p' to the load-path list."
+  (add-to-list 'load-path p))
 
-;; no tabs by default...
-(setq-default indent-tabs-mode nil)
+(defun add-root-path (p)
+  "Add a relative directory to the load path."
+  (add-path (root-path p)))
 
-;; Use Emacs 24 color themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'zenburn t)
-;;(load-theme 'solarized-dark t)
+(defun add-lib-path (p)
+  "Add a relative lib directory to the load path"
+  (add-root-path (concat "lib/" p)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Load Path
 
-;;;;;;;;;;;;;;;;;;;;
-;; NixOS Settings ;;
-;;;;;;;;;;;;;;;;;;;;
+(add-root-path "lib")    ;; submodules live here.
+(add-root-path "themes") ;; for dynamic themes like solarized.el
 
-;; Fix load-path in NixOs
-(add-to-list 'load-path "~/.nix-profile/share/emacs/site-lisp" )
-(add-to-list 'load-path "/var/run/current-system/sw/share/emacs/site-lisp")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Configuration Files
 
-;; Fix tramp in NixOS
-(require 'tramp)
-(add-to-list 'tramp-remote-path "/var/run/current-system/sw/bin")
+(load-config "auto-complete-conf.el")
+(load-config "clojure-conf.el")
+(load-config "haskell-conf.el")
+(load-config "nixos-conf.el")
+(load-config "user")
 
-;; Enable nix mode
-(setq auto-mode-alist (append '(("\\.nix$" . nix-mode)) auto-mode-alist))
-(autoload 'nix-mode "nix-mode" "nix mode" t)
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Clojure slime/swank-clojure ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Load and configure SLIME
-(add-to-list 'load-path "~/.emacs.d/lib/slime")
-(require 'slime)
-(eval-after-load 'slime '(setq slime-protocol-version 'ignore))
-(slime-setup '(slime-repl))
-
-;; Load a major mode for editing Clojure code.
-(add-to-list 'load-path "~/.emacs.d/lib/clojure-mode")
-(require 'clojure-mode)
-(require 'clojure-test-mode) ;; requires slime
-
-;; Add paredit hook
-(add-to-list 'load-path "~/.emacs.d/lib/paredit")
-(require 'paredit)
-(defun turn-on-paredit () (paredit-mode 1))
-(add-hook 'clojure-mode-hook 'turn-on-paredit)
-
-;;;;;;;;;;;;;;;;;;
-;; Haskell Mode ;;
-;;;;;;;;;;;;;;;;;;
-
-(load "~/.emacs.d/lib/haskell-mode/haskell-site-file.el")
-
-(add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
-(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
-;;(add-hook 'haskell-mode-hook 'turn-on-haskell-indent)
-;;(add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
-
-(add-hook 'haskell-mode-hook 'imenu-add-menubar-index)
-
-;; init.el ends here...
+;;
+;; End of init.el
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
