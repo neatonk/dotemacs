@@ -38,9 +38,8 @@
 ;;;;;;;;;;;;;;;;;;;;
 
 ;; Fix load-path in NixOs
-(setq load-path (append (list "~/.nix-profile/share/emacs/site-lisp" 
-			      "/var/run/current-system/sw/share/emacs/site-lisp") 
-			load-path))
+(add-to-list 'load-path "~/.nix-profile/share/emacs/site-lisp" )
+(add-to-list 'load-path "/var/run/current-system/sw/share/emacs/site-lisp")
 
 ;; Fix tramp in NixOS
 (require 'tramp)
@@ -56,17 +55,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Load and configure SLIME
-(add-to-list 'load-path "lib/slime")
+(add-to-list 'load-path "~/.emacs.d/lib/slime")
 (require 'slime)
 (eval-after-load 'slime '(setq slime-protocol-version 'ignore))
 (slime-setup '(slime-repl))
 
 ;; Load a major mode for editing Clojure code.
-(add-to-list 'load-path "lib/clojure-mode")
+(add-to-list 'load-path "~/.emacs.d/lib/clojure-mode")
 (require 'clojure-mode)
 (require 'clojure-test-mode) ;; requires slime
 
 ;; Add paredit hook
+(add-to-list 'load-path "~/.emacs.d/lib/paredit")
 (require 'paredit)
 (defun turn-on-paredit () (paredit-mode 1))
 (add-hook 'clojure-mode-hook 'turn-on-paredit)
