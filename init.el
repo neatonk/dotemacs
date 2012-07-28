@@ -45,6 +45,7 @@
 ;; load some config files...
 (load-config "auto-complete-conf.el")
 (load-config "clojure-conf.el")
+(load-config "elisp-conf.el")
 (load-config "haskell-conf.el")
 (load-config "nixos-conf.el")
 (load-config "user")
