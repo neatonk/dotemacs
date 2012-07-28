@@ -2,14 +2,36 @@
 ;; Personalization ;;
 ;;;;;;;;;;;;;;;;;;;;;
 
+;; add lib and themes to load-path...
+(add-to-list 'load-path "~/.emacs.d/lib")
+(add-to-list 'load-path "~/.emacs.d/themes")
+
+;; save space...
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+;; no beep...
+(setq visible-bell t)
+
+;; no splash screen...
+(setq inhibit-splash-screen t)
+
+;; by the numbers...
+(linum-mode 1)
+(line-number-mode 1)
+(column-number-mode 1)
+
 (global-font-lock-mode)
 
-;; Don't use tabs by default
+;; no tabs by default...
 (setq-default indent-tabs-mode nil)
 
 ;; Use Emacs 24 color themes
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'zenburn t)
+;;(load-theme 'solarized-dark t)
+
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; NixOS Settings ;;
