@@ -18,3 +18,6 @@
 	path = lib/auto-complete
 	url = git://github.com/m2ym/auto-complete.git
 	ignore = untracked
+[submodule "lib/popup"]
+	path = lib/popup
+	url = git://github.com/m2ym/popup-el.git
