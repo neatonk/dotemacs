@@ -12,4 +12,4 @@
 
 ;; Add paredit hook
 (require 'paredit)
-(add-hook 'clojure-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'clojure-mode-hook 'enable-paredit-mode)
