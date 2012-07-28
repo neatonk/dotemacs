@@ -15,6 +15,9 @@
   "Add a relative directory to the load path."
   (add-to-load-path (root-path p)))
 
+;; add some root dirs to the load path...
+(add-root "lib")    ;; submodules live here.
+(add-root "themes") ;; for dynamic themes like solarized.el
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -26,6 +29,12 @@
   "Add a relative lib directory to the load path"
   (add-to-load-path (lib-path p)))
 
+;; add some libs to the load path...
+(add-lib "auto-complete")
+(add-lib "clojure-mode")
+(add-lib "paredit")
+(add-lib "popup")
+(add-lib "slime")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configuration Files

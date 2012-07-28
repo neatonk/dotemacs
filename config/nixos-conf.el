@@ -2,7 +2,7 @@
 ;; config/nixos-conf.el
 
 ;; Fix load-path in NixOs
-(add-to-list 'load-path "~/.nix-profile/share/emacs/site-lisp" )
+(add-to-list 'load-path "~/.nix-profile/share/emacs/site-lisp")
 (add-to-list 'load-path "/var/run/current-system/sw/share/emacs/site-lisp")
 
 ;; Fix tramp in NixOS

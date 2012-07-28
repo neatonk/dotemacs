@@ -1,8 +1,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; config/auto-complete-conf.el
 
-(add-lib-path "popup")
-(add-lib-path "auto-complete")
 (require 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
