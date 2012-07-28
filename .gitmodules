@@ -10,10 +10,6 @@
 	path = lib/slime
 	url = git://github.com/technomancy/slime.git
 	ignore = untracked
-[submodule "lib/swank-clojure"]
-	path = lib/swank-clojure
-	url = git://github.com/technomancy/swank-clojure.git
-	ignore = untracked
 [submodule "lib/paredit"]
 	path = lib/paredit
 	url = git://github.com/emacsmirror/paredit.git
