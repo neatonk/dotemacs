@@ -35,6 +35,7 @@
 (add-lib "paredit")
 (add-lib "popup")
 (add-lib "slime")
+(add-lib "undo-tree")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configuration Files
@@ -57,6 +58,7 @@
 (load-config "elisp-conf.el")
 (load-config "haskell-conf.el")
 (load-config "nixos-conf.el")
+(load-config "undo-tree-conf.el")
 (load-config "user")
 
 ;;

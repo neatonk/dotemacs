@@ -21,3 +21,8 @@
 [submodule "lib/popup"]
 	path = lib/popup
 	url = git://github.com/m2ym/popup-el.git
+      	ignore = untracked
+[submodule "lib/undo-tree"]
+	path = lib/undo-tree
+	url = http://www.dr-qubit.org/git/undo-tree.git
+	ignore = untracked
