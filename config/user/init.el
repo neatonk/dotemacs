@@ -29,10 +29,14 @@
 (load-theme 'zenburn t)
 ;;(load-theme 'solarized-dark t)
 
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-(custom-set-variables
-  '(auto-save-file-name-transforms '((".*" (root-path "autosaves/\\1") t)))
-  '(backup-directory-alist '((".*" . (root-path "backups/")))))
+;; Put autosave files in ~/.emacs.d/autosaves/
+(let ((autosaves (root-path "autosaves/")))
+  (make-directory autosaves t)
+  (setq auto-save-file-name-transforms
+        `((".*" ,autosaves t))))
 
-;; create the autosave dir if necessary, since emacs won't.
-(make-directory "~/.emacs.d/autosaves/" t)
+;; Put autosave files in ~/.emacs.d/backups/
+(let ((backups (root-path "backups/")))
+  (make-directory backups t)
+  (setq backup-directory-alist
+        `((".*" . ,backups))))
