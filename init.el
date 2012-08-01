@@ -46,22 +46,31 @@
   "Resolve path relative to 'config/'."
   (root-path (concat "config/" (or p ""))))
 
-(defun load-config (p)
-  "Load a file relative the config dir. If 'p' is a directory
-  name, then 'p/init.el' will be loaded."
-  (let ((p (config-path p)))
-    (load (if (file-directory-p p) 
-              (concat p "/init.el")
-              p))))
+(defun find-config (name)
+  "Find and return the path to a named config if it exists.
+  Otherwise nil. The given name can be a regular file, a
+  directory (containing init.el), or a partial file name (to
+  which '-conf.el' will be appended)."
+  (let* ((p (config-path name))
+        (pconf (concat p "-conf.el"))
+        (pinit (concat p "/init.el")))
+    (cond ((file-regular-p p)     p)
+          ((file-regular-p pinit) pinit)
+          ((file-regular-p pconf) pconf))))
+
+(defun load-config (name)
+  "Find a load a named config file. See 'find-config'"
+  (let ((p (find-config name))) 
+    (when p (load p))))
 
 ;; load some config files...
-(load-config "auto-complete-conf.el")
-(load-config "clojure-conf.el")
-(load-config "elisp-conf.el")
-(load-config "haskell-conf.el")
-(load-config "nixos-conf.el")
-(load-config "undo-tree-conf.el")
-(load-config "smex-conf.el")
+(load-config "auto-complete")
+(load-config "clojure")
+(load-config "elisp")
+(load-config "haskell")
+(load-config "nixos")
+(load-config "undo-tree")
+(load-config "smex")
 (load-config "user")
 
 ;;
