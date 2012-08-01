@@ -35,6 +35,7 @@
 (add-lib "paredit")
 (add-lib "popup")
 (add-lib "slime")
+(add-lib "smex")
 (add-lib "undo-tree")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -59,6 +60,7 @@
 (load-config "haskell-conf.el")
 (load-config "nixos-conf.el")
 (load-config "undo-tree-conf.el")
+(load-config "smex-conf.el")
 (load-config "user")
 
 ;;
