@@ -32,6 +32,7 @@
 ;; add some libs to the load path...
 (add-lib "auto-complete")
 (add-lib "clojure-mode")
+(add-lib "haskell-mode")
 (add-lib "paredit")
 (add-lib "popup")
 (add-lib "slime")
