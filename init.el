@@ -63,14 +63,19 @@
   (let ((p (find-config name))) 
     (when p (load p))))
 
-;; load some config files...
+;; lib config...
 (load-config "auto-complete")
-(load-config "clojure")
-(load-config "elisp")
-(load-config "haskell")
-(load-config "nixos")
-(load-config "undo-tree")
+(load-config "clojure-mode")
+(load-config "haskell-mode")
+(load-config "paredit")
+(load-config "popup")
+(load-config "slime")
 (load-config "smex")
+(load-config "undo-tree")
+
+;; additional config...
+(load-config "elisp")
+(load-config "nixos")
 (load-config "user")
 
 ;;
