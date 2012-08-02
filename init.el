@@ -1,50 +1,61 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Load Path
+;; load path and user directories
 
-(defun add-to-load-path (p)
-  "Add 'p' to the load-path."
-  (add-to-list 'load-path p))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(defun root-path (&optional p)
+(defun user-root (&optional p)
   "Resolve path relative to the user-emacs-directory."
   (concat user-emacs-directory (or p "")))
 
-(defun add-root (p)
-  "Add a relative directory to the load path."
-  (add-to-load-path (root-path p)))
+(defvar user-lib-directory (user-root "lib")
+  "A directory containing user installed libs.")
 
-;; add some root dirs to the load path...
-(add-root "lib")    ;; submodules live here.
-(add-root "themes") ;; for dynamic themes like solarized.el
+(defvar user-themes-directory (user-root "themes")
+  "A directory containing user installed themes.")
+
+(defvar user-backups-directory (user-root "backups")
+  "A directory used for automatic backup files.")
+
+(defvar user-autosaves-directory (user-root "autosaves")
+  "A directory used for autosave files.")
+
+;; add to load path
+(add-to-list 'load-path user-lib-directory)
+(add-to-list 'load-path user-themes-directory)
+
+(add-to-list 'custom-theme-load-path user-themes-directory)
+
+;; put autosave files in ~/.emacs.d/autosaves/
+(make-directory user-autosaves-directory t)
+(setq auto-save-file-name-transforms
+      `((".*" ,user-autosaves-directory t)))
+
+;; put autosave files in ~/.emacs.d/backups/
+(make-directory user-backups-directory t)
+  (setq backup-directory-alist
+        `((".*" . ,user-backups-directory)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; libraries
 
-(defun lib-path (&optional p)
+(defvar required-libs
+  '("auto-complete" "clojure-mode" "haskell-mode" "paredit" "popup"
+    "slime" "smex" "undo-tree")
+  "A list of libraries required by this config.")
+
+(defun user-lib (&optional p)
   "Resolve path relative to 'lib/'."
-  (root-path (concat "lib/" (or p ""))))
-
-(defun add-lib (p)
-  "Add a relative lib directory to the load path"
-  (add-to-load-path (lib-path p)))
+  (user-root (concat "lib/" (or p ""))))
 
 ;; add some libs to the load path...
-(add-lib "auto-complete")
-(add-lib "clojure-mode")
-(add-lib "haskell-mode")
-(add-lib "paredit")
-(add-lib "popup")
-(add-lib "slime")
-(add-lib "smex")
-(add-lib "undo-tree")
+(dolist (name required-libs nil)
+  (add-to-list 'load-path (user-lib name)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configuration Files
 
 (defun config-path (&optional p)
   "Resolve path relative to 'config/'."
-  (root-path (concat "config/" (or p ""))))
+  (user-root (concat "config/" (or p ""))))
 
 (defun find-config (name)
   "Find and return the path to a named config if it exists.
@@ -63,20 +74,13 @@
   (let ((p (find-config name))) 
     (when p (load p))))
 
-;; lib config...
-(load-config "auto-complete")
-(load-config "clojure-mode")
-(load-config "haskell-mode")
-(load-config "paredit")
-(load-config "popup")
-(load-config "slime")
-(load-config "smex")
-(load-config "undo-tree")
+;; load any lib config files.
+(dolist (name required-libs) 
+  (load-config name))
 
-;; additional config...
-(load-config "elisp")
-(load-config "nixos")
-(load-config "user")
+;; load additional config files...
+(dolist (name '("elisp" "nixos" "user")) 
+  (load-config name))
 
 ;;
 ;; End of init.el

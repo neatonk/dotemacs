@@ -25,18 +25,5 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Use Emacs 24 color themes
-(add-to-list 'custom-theme-load-path (root-path "themes"))
 (load-theme 'zenburn t)
 ;;(load-theme 'solarized-dark t)
-
-;; Put autosave files in ~/.emacs.d/autosaves/
-(let ((autosaves (root-path "autosaves/")))
-  (make-directory autosaves t)
-  (setq auto-save-file-name-transforms
-        `((".*" ,autosaves t))))
-
-;; Put autosave files in ~/.emacs.d/backups/
-(let ((backups (root-path "backups/")))
-  (make-directory backups t)
-  (setq backup-directory-alist
-        `((".*" . ,backups))))

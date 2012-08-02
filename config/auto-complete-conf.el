@@ -5,7 +5,7 @@
 (require 'auto-complete-config)
 (ac-config-default)
 (add-to-list 'ac-dictionary-directories 
-             (lib-path "auto-complete/dict"))
+             (user-lib "auto-complete/dict"))
 
 (global-auto-complete-mode t)
 (setq ac-auto-show-menu t)
