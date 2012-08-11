@@ -13,3 +13,7 @@
 ;; Add paredit hook
 (require 'paredit)
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
+
+;; Rainbow Delimiters
+(require 'rainbow-delimiters)
+(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)

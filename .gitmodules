@@ -30,3 +30,7 @@
 	path = lib/smex
 	url = git://github.com/nonsequitur/smex.git
 	ignore = untracked
+[submodule "lib/rainbow-delimiters"]
+	path = lib/rainbow-delimiters
+	url = git://github.com/jlr/rainbow-delimiters.git
+	ignore = untracked
