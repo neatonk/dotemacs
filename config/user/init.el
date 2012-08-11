@@ -32,3 +32,9 @@
 ;; Use Emacs 24 color themes
 (load-theme 'zenburn t)
 ;;(load-theme 'solarized-dark t)
+
+;; use aspell for spelling...
+(setq ispell-program-name "aspell")
+(setq ispell-list-command "list")
+;; for speed... normal, fast, ultra
+(setq ispell-extra-args '("--sug-mode=fast"))
