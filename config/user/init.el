@@ -19,7 +19,12 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
+;; syntax highlighting
 (global-font-lock-mode)
+
+;; highlight parens
+(show-paren-mode 1)
+(set-face-background 'show-paren-match-face "black")
 
 ;; no tabs by default...
 (setq-default indent-tabs-mode nil)
