@@ -1,8 +1,10 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; config/auto-complete-conf.el
 
+
 (require 'auto-complete)
 (require 'auto-complete-config)
+
 (ac-config-default)
 (add-to-list 'ac-dictionary-directories 
              (user-lib "auto-complete/dict"))
@@ -21,23 +23,16 @@
                ac-source-words-in-all-buffer
                ac-source-semantic))
 
-(dolist (mode '(magit-log-edit-mode
-                log-edit-mode
-                org-mode
-                text-mode
-                haml-mode
-                sass-mode 
-                yaml-mode
-                csv-mode
-                espresso-mode
-                haskell-mode
-                html-mode
-                nxml-mode
-                sh-mode
-                smarty-mode
-                clojure-mode
-                lisp-mode
-                textile-mode
-                markdown-mode
-                tuareg-mode))
+(dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode
+                sass-mode yaml-mode csv-mode espresso-mode haskell-mode
+                html-mode nxml-mode sh-mode smarty-mode clojure-mode
+                lisp-mode textile-mode markdown-mode tuareg-mode))
   (add-to-list 'ac-modes mode))
+
+
+;;;; bindings
+(define-key ac-completing-map (kbd "C-M-n") 'ac-next)
+(define-key ac-completing-map (kbd "C-M-p") 'ac-previous)
+(define-key ac-completing-map "\t" 'ac-complete)
+(define-key ac-completing-map (kbd "M-RET") 'ac-help)
+(define-key ac-completing-map "\r" 'nil)

@@ -3,10 +3,12 @@
 
 (load-config "user/bindings.el")
 
-;; save space...
+;; disable *-bar-modes
 (menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+(if (display-graphic-p)
+    (progn 
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)))
 
 ;; no beep...
 (setq visible-bell t)

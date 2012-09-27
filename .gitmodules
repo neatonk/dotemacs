@@ -1,36 +1,30 @@
+[submodule "lib/nrepl"]
+	path = lib/nrepl
+	url = git://github.com/kingtim/nrepl.el.git
+[submodule "lib/ac-nrepl"]
+	path = lib/ac-nrepl
+	url = git://github.com/purcell/ac-nrepl.git
+[submodule "lib/magit"]
+	path = lib/magit
+	url = git://github.com/magit/magit.git
 [submodule "lib/clojure-mode"]
 	path = lib/clojure-mode
 	url = git://github.com/technomancy/clojure-mode.git
-	ignore = untracked
-[submodule "lib/haskell-mode"]
-	path = lib/haskell-mode
-	url = git://github.com/haskell/haskell-mode.git
-	ignore = untracked
-[submodule "lib/slime"]
-	path = lib/slime
-	url = git://github.com/technomancy/slime.git
-	ignore = untracked
 [submodule "lib/paredit"]
 	path = lib/paredit
 	url = git://github.com/emacsmirror/paredit.git
-	ignore = untracked
-[submodule "lib/auto-complete"]
-	path = lib/auto-complete
-	url = git://github.com/m2ym/auto-complete.git
-	ignore = untracked
-[submodule "lib/popup"]
-	path = lib/popup
-	url = git://github.com/m2ym/popup-el.git
-      	ignore = untracked
-[submodule "lib/undo-tree"]
-	path = lib/undo-tree
-	url = http://www.dr-qubit.org/git/undo-tree.git
-	ignore = untracked
-[submodule "lib/smex"]
-	path = lib/smex
-	url = git://github.com/nonsequitur/smex.git
-	ignore = untracked
 [submodule "lib/rainbow-delimiters"]
 	path = lib/rainbow-delimiters
 	url = git://github.com/jlr/rainbow-delimiters.git
-	ignore = untracked
+[submodule "lib/undo-tree"]
+	path = lib/undo-tree
+	url = git://github.com/emacsmirror/undo-tree.git
+[submodule "lib/auto-complete"]
+	path = lib/auto-complete
+	url = git://github.com/auto-complete/auto-complete.git
+[submodule "lib/popup"]
+	path = lib/popup
+	url = git://github.com/auto-complete/popup-el.git
+[submodule "lib/smex"]
+	path = lib/smex
+	url = git://github.com/nonsequitur/smex.git
