@@ -28,3 +28,6 @@
 [submodule "lib/smex"]
 	path = lib/smex
 	url = git://github.com/nonsequitur/smex.git
+[submodule "lib/scel"]
+	path = lib/scel
+	url = git://github.com/samaaron/scel.git
