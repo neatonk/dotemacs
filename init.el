@@ -30,8 +30,8 @@
 
 ;; put autosave files in ~/.emacs.d/backups/
 (make-directory user-backups-directory t)
-  (setq backup-directory-alist
-        `((".*" . ,user-backups-directory)))
+(setq backup-directory-alist
+      `((".*" . ,user-backups-directory)))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
