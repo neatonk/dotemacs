@@ -40,3 +40,6 @@
 (setq ispell-list-command "list")
 ;; for speed... normal, fast, ultra
 (setq ispell-extra-args '("--sug-mode=fast"))
+
+;; delete trainling whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
