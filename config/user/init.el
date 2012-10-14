@@ -6,7 +6,7 @@
 ;; disable *-bar-modes
 (menu-bar-mode -1)
 (if (display-graphic-p)
-    (progn 
+    (progn
       (tool-bar-mode -1)
       (scroll-bar-mode -1)))
 
@@ -17,7 +17,7 @@
 (setq inhibit-splash-screen t)
 
 ;; by the numbers...
-(linum-mode 1)
+(global-linum-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
 
