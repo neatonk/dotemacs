@@ -12,7 +12,7 @@
 
 ;; Clojure mode hooks
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
-(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
 ;; nrepl/ac-nrepl
 (add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
@@ -23,7 +23,7 @@
 (add-hook 'nrepl-mode-hook 'enable-paredit-mode)
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 
-(setq nrepl-popup-stacktraces nil)
+;;(setq nrepl-popup-stacktraces nil)
 
 (add-to-list 'same-window-buffer-names "*nrepl*")
 
