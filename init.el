@@ -50,6 +50,9 @@
 (dolist (name required-libs nil)
   (add-to-list 'load-path (user-lib name)))
 
+;; compile libs for speed...
+(byte-recompile-directory (user-lib) 0)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Configuration Files
 
@@ -71,15 +74,15 @@
 
 (defun load-config (name)
   "Find a load a named config file. See 'find-config'"
-  (let ((p (find-config name))) 
+  (let ((p (find-config name)))
     (when p (load p))))
 
 ;; load any lib config files.
-(dolist (name required-libs) 
+(dolist (name required-libs)
   (load-config name))
 
 ;; load additional config files...
-(dolist (name '("elisp" "nixos" "user")) 
+(dolist (name '("elisp" "nixos" "user"))
   (load-config name))
 
 ;;
@@ -91,10 +94,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes 
-   (quote 
-    ("7b4a6cbd00303fc53c2d486dfdbe76543e1491118eba6adc349205dbf0f7063a" 
-     "d2622a2a2966905a5237b54f35996ca6fda2f79a9253d44793cfe31079e3c92b" 
+ '(custom-safe-themes
+   (quote
+    ("7b4a6cbd00303fc53c2d486dfdbe76543e1491118eba6adc349205dbf0f7063a"
+     "d2622a2a2966905a5237b54f35996ca6fda2f79a9253d44793cfe31079e3c92b"
      default))))
 
 (custom-set-faces
