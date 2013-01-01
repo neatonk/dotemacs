@@ -43,3 +43,7 @@
 
 ;; delete trainling whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; better scrolling
+(setq scroll-margin 5)
+(setq scroll-conservatively 100000)
