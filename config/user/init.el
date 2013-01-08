@@ -11,6 +11,10 @@
       (tool-bar-mode -1)
       (scroll-bar-mode -1)))
 
+;; use GnuPG1 in text terminals
+(when (not (display-graphic-p))
+  (setq epg-gpg-program "/usr/local/bin/gpg"))
+
 ;; no beep...
 (setq visible-bell t)
 
