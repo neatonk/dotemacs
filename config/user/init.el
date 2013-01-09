@@ -2,7 +2,7 @@
 ;; config/user/init.el
 
 (load-config "user/bindings.el")
-(load-config "user/funtions.el")
+(load-config "user/functions.el")
 
 ;; disable *-bar-modes
 (menu-bar-mode -1)
