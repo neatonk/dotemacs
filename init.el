@@ -38,9 +38,9 @@
 ;; libraries
 
 (defvar required-libs
-  '("auto-complete" "clojure-mode" "nrepl" "ac-nrepl" "magit" "paredit"
-    "popup" "rainbow-delimiters" "smex" "sclang" "undo-tree")
-  "A list of libraries required by this config.")
+  '("auto-complete" "clojure-mode" "nrepl" "ac-nrepl" "magit" "markdown-mode"
+    "paredit" "popup" "rainbow-delimiters" "smex" "sclang" "undo-tree")
+  "A list of libraries required to load.")
 
 (defun user-lib (&optional p)
   "Resolve path relative to 'lib/'."

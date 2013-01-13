@@ -31,3 +31,6 @@
 [submodule "lib/scel"]
 	path = lib/scel
 	url = git://github.com/samaaron/scel.git
+[submodule "lib/markdown-mode"]
+	path = lib/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
