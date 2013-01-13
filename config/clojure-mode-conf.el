@@ -23,7 +23,7 @@
 (add-hook 'nrepl-mode-hook 'enable-paredit-mode)
 (add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 
-;;(setq nrepl-popup-stacktraces nil)
+(setq nrepl-popup-stacktraces nil)
 
 (add-to-list 'same-window-buffer-names "*nrepl*")
 
