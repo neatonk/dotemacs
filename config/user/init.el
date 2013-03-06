@@ -52,4 +52,4 @@
   (set (make-local-variable 'tab-width) 4)
   (set (make-local-variable 'indent-tabs-mode) true))
 
-(add-hook 'cperl-mode-hook legacy-tabs-mode)
+(add-hook 'cperl-mode-hook 'legacy-tabs-mode)
