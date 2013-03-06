@@ -40,3 +40,16 @@
 ;; use GnuPG1 in text terminals
 (when (not (display-graphic-p))
   (setq epg-gpg-program "/usr/local/bin/gpg"))
+
+;; prefer cperl-mode and use tabs to play nice...
+(mapc
+ (lambda (pair)
+   (if (eq (cdr pair) 'perl-mode)
+       (setcdr pair 'cperl-mode)))
+ (append auto-mode-alist interpreter-mode-alist))
+
+(defun legacy-tabs-mode ()
+  (set (make-local-variable 'tab-width) 4)
+  (set (make-local-variable 'indent-tabs-mode) true))
+
+(add-hook 'cperl-mode-hook legacy-tabs-mode)
