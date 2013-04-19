@@ -41,6 +41,9 @@
 (when (not (display-graphic-p))
   (setq epg-gpg-program "/usr/local/bin/gpg"))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; perl stuff...
+
 ;; prefer cperl-mode and use tabs to play nice...
 (mapc
  (lambda (pair)
@@ -50,6 +53,12 @@
 
 (defun legacy-tabs-mode ()
   (set (make-local-variable 'tab-width) 4)
-  (set (make-local-variable 'indent-tabs-mode) true))
+  (set (make-local-variable 'indent-tabs-mode) t))
 
 (add-hook 'cperl-mode-hook 'legacy-tabs-mode)
+
+(setq cperl-indent-level 4
+      cperl-close-paren-offset -4
+      cperl-continued-statement-offset 4
+      cperl-indent-parens-as-block t
+      cperl-tab-always-indent t)
