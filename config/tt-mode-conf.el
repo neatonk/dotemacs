@@ -2,4 +2,5 @@
 ;; config/tt-mode-conf.el
 
 (autoload 'tt-mode "tt-mode")
-(setq auto-mode-alist (append '(("\\.tt$" . tt-mode))  auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.tt\\'" . tt-mode))
+(add-to-list 'auto-mode-alist '("\\.tt2\\'" . tt-mode))
