@@ -6,25 +6,20 @@
 (require 'clojure-mode)
 (require 'nrepl)
 (require 'paredit)
-(require 'rainbow-delimiters)
+;;(require 'rainbow-delimiters)
 
-;;(require 'clojure-test-mode) ;; requires slime
+(defun my-nrepl-mode-setup ()
+  (require 'nrepl-ritz)
+  (nrepl-turn-on-eldoc-mode)
+  (enable-paredit-mode)
+  (ac-nrepl-setup))
 
-;; Clojure mode hooks
+(add-hook 'nrepl-interaction-mode-hook 'my-nrepl-mode-setup)
+(add-hook 'nrepl-mode-hook 'my-nrepl-mode-setup)
+(add-hook 'nrepl-popup-buffer-mode-hook 'buffer-disable-undo)
+
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-
-;; nrepl/ac-nrepl
-(add-hook 'nrepl-interaction-mode-hook 'nrepl-turn-on-eldoc-mode)
-(add-hook 'nrepl-interaction-mode-hook 'enable-paredit-mode)
-(add-hook 'nrepl-interaction-mode-hook 'ac-nrepl-setup)
-(add-hook 'nrepl-interaction-mode-hook 'my-nrepl-mode-setup)
-(defun my-nrepl-mode-setup ()
-  (require 'nrepl-ritz))
-
-(add-hook 'nrepl-mode-hook 'nrepl-turn-on-eldoc-mode)
-(add-hook 'nrepl-mode-hook 'enable-paredit-mode)
-(add-hook 'nrepl-mode-hook 'ac-nrepl-setup)
 
 (setq nrepl-popup-stacktraces nil)
 

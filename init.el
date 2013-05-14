@@ -48,7 +48,7 @@
   (user-root (concat "lib/" (or p ""))))
 
 ;; add some libs to the load path...
-(dolist (name required-libs nil)
+(dolist (name required-libs)
   (add-to-list 'load-path (user-lib name)))
 
 ;; compile libs for speed...
