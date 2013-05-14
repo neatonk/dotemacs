@@ -1,34 +1,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; config/clojure-conf.el
+;; config/clojure-mode-conf.el
 
-(require 'ac-nrepl)
-(require 'auto-complete)
 (require 'clojure-mode)
-(require 'nrepl)
 (require 'paredit)
+
 ;;(require 'rainbow-delimiters)
 
 (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
 
-(defun my-nrepl-mode-setup ()
-  (require 'nrepl-ritz)
-  (nrepl-turn-on-eldoc-mode)
-  (enable-paredit-mode)
-  (ac-nrepl-setup))
-
-(add-hook 'nrepl-interaction-mode-hook 'my-nrepl-mode-setup)
-(add-hook 'nrepl-mode-hook 'my-nrepl-mode-setup)
-(add-hook 'nrepl-popup-buffer-mode-hook 'buffer-disable-undo)
-
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
-
-(setq nrepl-popup-stacktraces nil)
-
-(add-to-list 'same-window-buffer-names "*nrepl*")
-
-(eval-after-load "auto-complete"
-  '(add-to-list 'ac-modes 'nrepl-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
