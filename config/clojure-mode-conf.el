@@ -8,6 +8,8 @@
 (require 'paredit)
 ;;(require 'rainbow-delimiters)
 
+(add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
+
 (defun my-nrepl-mode-setup ()
   (require 'nrepl-ritz)
   (nrepl-turn-on-eldoc-mode)
