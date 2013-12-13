@@ -40,7 +40,7 @@
 (defvar required-libs
   '("auto-complete" "clojure-mode" "nrepl" "ac-nrepl" "nrepl-ritz" "magit"
     "markdown-mode" "paredit" "popup" "rainbow-delimiters" "smex" "sclang"
-    "undo-tree" "tt-mode")
+    "undo-tree" "tt-mode" "erlang")
   "A list of libraries required to load.")
 
 (defun user-lib (&optional p)
