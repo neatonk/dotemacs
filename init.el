@@ -40,7 +40,7 @@
 (defvar required-libs
   '("auto-complete" "clojure-mode" "nrepl" "ac-nrepl" "nrepl-ritz" "magit"
     "markdown-mode" "paredit" "popup" "rainbow-delimiters" "smex" "sclang"
-    "undo-tree" "tt-mode" "erlang")
+    "undo-tree" "tt-mode")
   "A list of libraries required to load.")
 
 (defun user-lib (&optional p)
@@ -83,7 +83,7 @@
   (load-config name))
 
 ;; load additional config files...
-(dolist (name '("elisp" "nixos" "user"))
+(dolist (name '("elisp" "nixos" "user" "erlang"))
   (load-config name))
 
 ;;
