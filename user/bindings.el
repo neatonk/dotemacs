@@ -9,6 +9,3 @@
 ;; text scale
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
-
-;; clojure mode
-(define-key clojure-mode-map (kbd "C-x j") 'nrepl-jack-in)

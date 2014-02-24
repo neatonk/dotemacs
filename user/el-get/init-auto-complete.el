@@ -6,8 +6,8 @@
 (require 'auto-complete-config)
 
 (ac-config-default)
-(add-to-list 'ac-dictionary-directories 
-             (user-lib "auto-complete/dict"))
+(add-to-list 'ac-dictionary-directories
+             (concat user-el-get-lib-directory "auto-complete/dict"))
 
 (global-auto-complete-mode t)
 (setq ac-auto-show-menu t)
@@ -16,7 +16,7 @@
 (setq ac-quick-help-height 60)
 (setq ac-use-menu-map t)
 
-(set-default 'ac-sources 
+(set-default 'ac-sources
              '(ac-source-dictionary
                ac-source-words-in-buffer
                ac-source-words-in-same-mode-buffers
@@ -26,7 +26,8 @@
 (dolist (mode '(magit-log-edit-mode log-edit-mode org-mode text-mode haml-mode
                 sass-mode yaml-mode csv-mode espresso-mode haskell-mode
                 html-mode nxml-mode sh-mode smarty-mode clojure-mode
-                lisp-mode textile-mode markdown-mode tuareg-mode))
+                lisp-mode textile-mode markdown-mode tuareg-mode
+                cider-repl-mode))
   (add-to-list 'ac-modes mode))
 
 

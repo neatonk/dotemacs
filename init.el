@@ -5,8 +5,13 @@
   "Resolve path relative to the user-emacs-directory."
   (concat user-emacs-directory (or p "")))
 
-(defvar user-lib-directory (user-root "lib")
-  "A directory containing user installed libs.")
+(defun user-path (&optional p)
+  "Resolve path relative to 'user/'."
+  (user-root (concat "user/" (or p ""))))
+
+(defun user-load (name)
+  "Find and load a user file relative."
+  (load (user-path name)))
 
 (defvar user-themes-directory (user-root "themes")
   "A directory containing user installed themes.")
@@ -17,10 +22,8 @@
 (defvar user-autosaves-directory (user-root "autosaves")
   "A directory used for autosave files.")
 
-;; add to load path
-(add-to-list 'load-path user-lib-directory)
+;; add themes to load path
 (add-to-list 'load-path user-themes-directory)
-
 (add-to-list 'custom-theme-load-path user-themes-directory)
 
 ;; put autosave files in ~/.emacs.d/autosaves/
@@ -35,56 +38,35 @@
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; libraries
+;; el-get
 
-(defvar required-libs
-  '("auto-complete" "clojure-mode" "nrepl" "ac-nrepl" "nrepl-ritz" "magit"
-    "markdown-mode" "paredit" "popup" "rainbow-delimiters" "smex" "sclang"
-    "undo-tree" "tt-mode")
-  "A list of libraries required to load.")
+(defvar user-el-get-directory (user-root "el-get"))
+(defvar user-el-get-lib-directory (user-root "el-get/el-get"))
 
-(defun user-lib (&optional p)
-  "Resolve path relative to 'lib/'."
-  (user-root (concat "lib/" (or p ""))))
+(add-to-list 'load-path user-el-get-lib-directory)
 
-;; add some libs to the load path...
-(dolist (name required-libs)
-  (add-to-list 'load-path (user-lib name)))
+(catch 'missing-el-get
+  (unless (require 'el-get nil 'noerror)
+    (if (y-or-n-p "Missing el-get. Install it now?")
+        (with-current-buffer
+            (url-retrieve-synchronously
+             "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+          (goto-char (point-max))
+          (eval-print-last-sexp))
+      (throw 'missing-el-get)))
 
-;; compile libs for speed...
-(byte-recompile-directory (user-lib) 0)
+  (add-to-list 'el-get-recipe-path (user-path "el-get/recipes"))
+  (setq el-get-user-package-directory (user-path "el-get"))
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Configuration Files
+  (setq user-el-get-packages ; sclang tt-mode undo-tree
+        '(el-get auto-complete clojure-mode cider ac-nrepl magit
+          markdown-mode paredit popup rainbow-delimiters smex))
 
-(defun config-path (&optional p)
-  "Resolve path relative to 'config/'."
-  (user-root (concat "config/" (or p ""))))
+  (el-get 'sync user-el-get-packages))
 
-(defun find-config (name)
-  "Find and return the path to a named config if it exists.
-  Otherwise nil. The given name can be a regular file, a
-  directory (containing init.el), or a partial file name (to
-  which '-conf.el' will be appended)."
-  (let* ((p (config-path name))
-        (pconf (concat p "-conf.el"))
-        (pinit (concat p "/init.el")))
-    (cond ((file-regular-p p)     p)
-          ((file-regular-p pinit) pinit)
-          ((file-regular-p pconf) pconf))))
 
-(defun load-config (name)
-  "Find a load a named config file. See 'find-config'"
-  (let ((p (find-config name)))
-    (when p (load p))))
-
-;; load any lib config files.
-(dolist (name required-libs)
-  (load-config name))
-
-;; load additional config files...
-(dolist (name '("elisp" "nixos" "user" "erlang"))
-  (load-config name))
+;; always load user init file
+(user-load "init.el")
 
 ;;
 ;; End of init.el

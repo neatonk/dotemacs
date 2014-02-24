@@ -1,13 +1,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; config/user/init.el
 
-(load-config "user/bindings.el")
-(load-config "user/functions.el")
-(load-config "user/advice.el")
-(load-config "user/hooks.el")
+(user-load "bindings.el")
+(user-load "functions.el")
+(user-load "advice.el")
+(user-load "hooks.el")
 
 (setq-default fill-column 80
-              indent-tabs-mode nil)
+              indent-tabs-mode nil
+              tab-width 4)
 
 (global-linum-mode 1)
 (line-number-mode 1)

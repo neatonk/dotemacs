@@ -1,17 +1,7 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; config/clojure-mode-conf.el
-
-(require 'clojure-mode)
-(require 'paredit)
-
-;;(require 'rainbow-delimiters)
-
 (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
-
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
-;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
 ;; (fn [] ...) -> (λ [] ...)
 ;; (eval-after-load 'clojure-mode
