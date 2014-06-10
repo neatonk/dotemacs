@@ -6,6 +6,8 @@
 (user-load "advice.el")
 (user-load "hooks.el")
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 (setq-default fill-column 80
               indent-tabs-mode nil
               tab-width 4)
