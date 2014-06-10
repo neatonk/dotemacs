@@ -60,7 +60,7 @@
 
   (setq user-el-get-packages ; sclang tt-mode undo-tree
         '(el-get auto-complete clojure-mode cider ac-nrepl magit
-          markdown-mode paredit popup rainbow-delimiters smex))
+          markdown-mode paredit popup rainbow-delimiters smex scss-mode))
 
   (el-get 'sync user-el-get-packages))
 
@@ -81,7 +81,8 @@
    (quote
     ("7b4a6cbd00303fc53c2d486dfdbe76543e1491118eba6adc349205dbf0f7063a"
      "d2622a2a2966905a5237b54f35996ca6fda2f79a9253d44793cfe31079e3c92b"
-     default))))
+     default)))
+ '(scss-compile-at-save nil))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
