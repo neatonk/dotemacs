@@ -1,7 +1,8 @@
 (add-to-list 'auto-mode-alist '("\\.cljs\\'" . clojure-mode))
 (add-hook 'clojure-mode-hook 'enable-paredit-mode)
 
-;;(define-clojure-indent (this-as 1))
+(put 'this-as 'clojure-backtracking-indent '(4 (2)))
+(define-clojure-indent (this-as 1))
 
 ;;(add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
 
