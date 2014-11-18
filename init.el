@@ -59,7 +59,7 @@
   (setq el-get-user-package-directory (user-path "el-get"))
 
   (setq user-el-get-packages ; sclang tt-mode undo-tree
-        '(el-get auto-complete clojure-mode cider ac-nrepl magit
+        '(el-get auto-complete clojure-mode cider ac-cider magit
           markdown-mode paredit popup rainbow-delimiters smex scss-mode))
 
   (el-get 'sync user-el-get-packages))
