@@ -23,3 +23,5 @@ tmp/*
 .smex-items
 swank/*
 /el-get/
+/cider-repl-history
+/elpa/
