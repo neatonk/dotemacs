@@ -65,3 +65,5 @@
       cperl-continued-statement-offset 4
       cperl-indent-parens-as-block t
       cperl-tab-always-indent t)
+
+(setq magit-last-seen-setup-instructions "1.4.0")
