@@ -62,7 +62,11 @@
         '(el-get auto-complete clojure-mode cider ac-cider magit
           markdown-mode paredit popup rainbow-delimiters smex scss-mode))
 
-  (el-get 'sync user-el-get-packages))
+  ;; Synchronously install selected packages
+  (el-get 'sync user-el-get-packages)
+
+  ;; Install selected packages from github
+  (el-get-bundle martinscz/xc-mode))
 
 
 ;; always load user init file
