@@ -60,7 +60,7 @@
 
   (setq user-el-get-packages ; sclang tt-mode undo-tree
         '(el-get auto-complete clojure-mode cider ac-cider magit
-          markdown-mode paredit popup rainbow-delimiters smex scss-mode))
+          markdown-mode paredit popup rainbow-delimiters smex))
 
   ;; Synchronously install selected packages
   (el-get 'sync user-el-get-packages)
