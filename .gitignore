@@ -25,3 +25,4 @@ swank/*
 /el-get/
 /cider-repl-history
 /elpa/
+/smex-items
