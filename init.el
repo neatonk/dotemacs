@@ -59,14 +59,31 @@
   (setq el-get-user-package-directory (user-path "el-get"))
 
   (setq user-el-get-packages ; sclang tt-mode undo-tree
-        '(el-get auto-complete clojure-mode cider ac-cider magit
-          markdown-mode paredit popup rainbow-delimiters smex))
-
-  ;; Synchronously install selected packages
-  (el-get 'sync user-el-get-packages)
+        '(ac-cider
+          auto-complete
+          clojure-mode
+          cider
+          el-get
+          git-modes
+          magit
+          markdown-mode
+          nginx-mode
+          paredit
+          popup
+          rainbow-delimiters
+          scss-mode
+          smex
+          yaml-mode
+          ))
 
   ;; Install selected packages from github
-  (el-get-bundle martinscz/xc-mode))
+  (el-get-bundle vcl-mode
+    :url "https://raw.githubusercontent.com/ssm/elisp/master/vcl-mode.el")
+
+  (el-get-bundle martinscz/xc-mode)
+
+  ;; Synchronously install selected packages
+  (el-get 'sync user-el-get-packages))
 
 
 ;; always load user init file
