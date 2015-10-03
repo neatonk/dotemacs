@@ -73,6 +73,7 @@
           rainbow-delimiters
           scss-mode
           smex
+          tuareg-mode ; OCaml
           yaml-mode
           ))
 
