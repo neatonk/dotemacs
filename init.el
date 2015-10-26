@@ -83,6 +83,8 @@
 
   (el-get-bundle martinscz/xc-mode)
 
+  (el-get-bundle davorg/tt-mode)
+
   ;; Synchronously install selected packages
   (el-get 'sync user-el-get-packages))
 
