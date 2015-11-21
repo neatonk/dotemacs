@@ -67,3 +67,26 @@
       cperl-tab-always-indent t)
 
 (setq magit-last-seen-setup-instructions "1.4.0")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; OCaml stuff...
+
+;; Load Path
+;; - Add opam emacs directory
+(let ((opam-share (substring (shell-command-to-string "opam config var share 2> /dev/null") 0 -1)))
+  (add-to-list 'load-path (concat opam-share "/emacs/site-lisp")))
+
+;; Autoloads
+(autoload 'utop "utop" "Toplevel for OCaml" t)
+(autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+(autoload 'merlin-mode "merlin" "Merlin mode" t)
+
+;; Hooks
+(add-hook 'tuareg-mode-hook 'utop-minor-mode)
+(add-hook 'tuareg-mode-hook 'merlin-mode t)
+
+;; Config
+;; - Enable auto-complete
+(setq merlin-use-auto-complete-mode 'easy)
+;; - Use opam switch to lookup ocamlmerlin binary
+(setq merlin-command 'opam)
