@@ -30,6 +30,8 @@
 (make-directory user-autosaves-directory t)
 (setq auto-save-file-name-transforms
       `((".*" ,user-autosaves-directory t)))
+(setq tramp-auto-save-directory
+      user-autosaves-directory)
 
 ;; put autosave files in ~/.emacs.d/backups/
 (make-directory user-backups-directory t)
