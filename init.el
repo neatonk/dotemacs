@@ -19,7 +19,7 @@
 (defvar user-backups-directory (user-root "backups")
   "A directory used for automatic backup files.")
 
-(defvar user-autosaves-directory (user-root "autosaves")
+(defvar user-autosaves-directory (user-root "autosaves/")
   "A directory used for autosave files.")
 
 ;; add themes to load path
