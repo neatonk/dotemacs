@@ -83,6 +83,9 @@
   (el-get-bundle vcl-mode
     :url "https://raw.githubusercontent.com/ssm/elisp/master/vcl-mode.el")
 
+  (el-get-bundle scad-mode
+    :url "https://raw.githubusercontent.com/openscad/openscad/openscad-2015.03/contrib/scad-mode.el")
+
   (el-get-bundle martinscz/xc-mode)
 
   (el-get-bundle davorg/tt-mode)
