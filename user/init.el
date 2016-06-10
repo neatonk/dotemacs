@@ -91,3 +91,19 @@
 (setq merlin-use-auto-complete-mode 'easy)
 ;; - Use opam switch to lookup ocamlmerlin binary
 (setq merlin-command 'opam)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Web stuff...
+
+;; Indentation
+(let ((n 2))
+  (setq js-indent-level n)
+  (setq javascript-indent-level n)       ; javascript-mode
+  (setq js-indent-level n)               ; js-mode
+  ;; (setq web-mode-attr-indent-offset n)
+  ;; (setq web-mode-attr-value-indent-offset n)
+  (setq web-mode-code-indent-offset n)   ; web-mode, js code in html file
+  (setq web-mode-css-indent-offset n)    ; web-mode, css in html file
+  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  ;;(setq web-mode-sql-indent-offset n)
+  (setq css-indent-offset n))            ; css-mode
