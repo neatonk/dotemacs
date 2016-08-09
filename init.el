@@ -65,6 +65,7 @@
           auto-complete
           clojure-mode
           cider
+          dockerfile-mode
           el-get
           git-modes
           magit
