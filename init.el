@@ -77,6 +77,7 @@
           scss-mode
           smex
           tuareg-mode ; OCaml
+          web-mode
           yaml-mode
           ))
 
