@@ -65,6 +65,7 @@
           auto-complete
           clojure-mode
           cider
+          cperl-mode
           dockerfile-mode
           el-get
           git-modes
