@@ -1,6 +1,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; load path and user directories
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (defun user-root (&optional p)
   "Resolve path relative to the user-emacs-directory."
   (concat user-emacs-directory (or p "")))
@@ -116,6 +123,7 @@
     ("7b4a6cbd00303fc53c2d486dfdbe76543e1491118eba6adc349205dbf0f7063a"
      "d2622a2a2966905a5237b54f35996ca6fda2f79a9253d44793cfe31079e3c92b"
      default)))
+ '(package-selected-packages (quote (queue)))
  '(scss-compile-at-save nil))
 
 (custom-set-faces
