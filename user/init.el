@@ -74,26 +74,24 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; OCaml stuff...
 
-;; Load Path
-;; - Add opam emacs directory
-(let ((opam-share (shell-command-to-string "opam config var share 2> /dev/null")))
-  (when (not (equal opam-share ""))
-    (add-to-list 'load-path (concat (substring opam-share 0 -1) "/emacs/site-lisp"))))
-
-;; Autoloads
-(autoload 'utop "utop" "Toplevel for OCaml" t)
-(autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
-(autoload 'merlin-mode "merlin" "Merlin mode" t)
-
-;; Hooks
-(add-hook 'tuareg-mode-hook 'utop-minor-mode)
-(add-hook 'tuareg-mode-hook 'merlin-mode t)
-
-;; Config
-;; - Enable auto-complete
-(setq merlin-use-auto-complete-mode 'easy)
-;; - Use opam switch to lookup ocamlmerlin binary
-(setq merlin-command 'opam)
+(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+  (when (and opam-share (file-directory-p opam-share))
+    ;; Add the opam lisp dir to the emacs load path
+    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
+    ;; Autoloads
+    (autoload 'utop "utop" "Toplevel for OCaml" t)
+    (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
+    (autoload 'merlin-mode "merlin" "Merlin mode" t)
+    ;; Hooks
+    (add-hook 'tuareg-mode-hook 'utop-minor-mode t)
+    (add-hook 'tuareg-mode-hook 'merlin-mode t)
+    ;; Config
+    ;; - Use the opam installed utop
+    (setq utop-command "opam config exec -- utop -emacs")
+    ;; - Enable auto-complete
+    (setq merlin-use-auto-complete-mode 'easy)
+    ;; - Use opam switch to lookup ocamlmerlin binary
+    (setq merlin-command 'opam)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Web stuff...
