@@ -72,7 +72,7 @@
 (setq magit-last-seen-setup-instructions "1.4.0")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; OCaml stuff...
+;; OCaml/Reason stuff...
 
 (let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
   (when (and opam-share (file-directory-p opam-share))
@@ -82,16 +82,16 @@
     (autoload 'utop "utop" "Toplevel for OCaml" t)
     (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
     (autoload 'merlin-mode "merlin" "Merlin mode" t)
+    (autoload 'reason-mode "reason-mode" "Reason Mode" t)
+    ;; load file containing autoloads for tuareg-mode
+    (load "tuareg-site-file")
     ;; Hooks
     (add-hook 'tuareg-mode-hook 'utop-minor-mode t)
     (add-hook 'tuareg-mode-hook 'merlin-mode t)
-    ;; Config
-    ;; - Use the opam installed utop
-    (setq utop-command "opam config exec -- utop -emacs")
-    ;; - Enable auto-complete
-    (setq merlin-use-auto-complete-mode 'easy)
-    ;; - Use opam switch to lookup ocamlmerlin binary
-    (setq merlin-command 'opam)))
+    (add-hook 'reason-mode-hook
+              (lambda ()
+                (add-hook 'before-save-hook 'refmt-before-save)
+                (merlin-mode)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Web stuff...

@@ -83,7 +83,6 @@
           rainbow-delimiters
           scss-mode
           smex
-          tuareg-mode ; OCaml
           web-mode
           xcscope
           yaml-mode
