@@ -64,7 +64,6 @@
         '(ac-cider
           auto-complete
           clojure-mode
-          cider
           cperl-mode
           dockerfile-mode
           el-get
@@ -84,6 +83,8 @@
           ))
 
   ;; Install selected packages from github
+  (el-get-bundle cider :checkout "v0.10.0")
+
   (el-get-bundle vcl-mode
     :url "https://raw.githubusercontent.com/ssm/vcl-mode/master/vcl-mode.el")
 
