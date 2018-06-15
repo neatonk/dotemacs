@@ -85,12 +85,13 @@
     (autoload 'merlin-mode "merlin" "Merlin mode" t)
     (autoload 'reason-mode "reason-mode" "Reason Mode" t)
     ;; load file containing autoloads for tuareg-mode
-    (load "tuareg-site-file")
+    (ignore-errors (load "tuareg-site-file"))
     ;; Hooks
     (add-hook 'tuareg-mode-hook 'utop-minor-mode t)
     (add-hook 'tuareg-mode-hook 'merlin-mode t)
     (add-hook 'reason-mode-hook
               (lambda ()
+                (setq refmt-width-mode 'fill)
                 (add-hook 'before-save-hook 'refmt-before-save)
                 (merlin-mode)))))
 

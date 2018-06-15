@@ -90,7 +90,7 @@
           ))
 
   ;; Install selected packages from github
-  (el-get-bundle cider :checkout "v0.10.0")
+  (el-get-bundle cider :checkout "v0.10.2")
 
   (el-get-bundle vcl-mode
     :url "https://raw.githubusercontent.com/ssm/vcl-mode/master/vcl-mode.el")
@@ -100,7 +100,8 @@
 
   (el-get-bundle martinscz/xc-mode)
 
-  ;;(el-get-bundle davorg/tt-mode)
+  (setq tt-mode-hook nil)
+  (el-get-bundle davorg/tt-mode)
 
   ;; Synchronously install selected packages
   (el-get 'sync user-el-get-packages))
