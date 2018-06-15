@@ -73,29 +73,6 @@
 (setq magit-last-seen-setup-instructions "1.4.0")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; OCaml/Reason stuff...
-
-(let ((opam-share (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
-  (when (and opam-share (file-directory-p opam-share))
-    ;; Add the opam lisp dir to the emacs load path
-    (add-to-list 'load-path (expand-file-name "emacs/site-lisp" opam-share))
-    ;; Autoloads
-    (autoload 'utop "utop" "Toplevel for OCaml" t)
-    (autoload 'utop-minor-mode "utop" "Minor mode for utop" t)
-    (autoload 'merlin-mode "merlin" "Merlin mode" t)
-    (autoload 'reason-mode "reason-mode" "Reason Mode" t)
-    ;; load file containing autoloads for tuareg-mode
-    (ignore-errors (load "tuareg-site-file"))
-    ;; Hooks
-    (add-hook 'tuareg-mode-hook 'utop-minor-mode t)
-    (add-hook 'tuareg-mode-hook 'merlin-mode t)
-    (add-hook 'reason-mode-hook
-              (lambda ()
-                (setq refmt-width-mode 'fill)
-                (add-hook 'before-save-hook 'refmt-before-save)
-                (merlin-mode)))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Web stuff...
 
 ;; Indentation
