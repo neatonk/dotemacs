@@ -12,6 +12,7 @@
               indent-tabs-mode nil
               tab-width 4)
 
+(blink-cursor-mode 0)
 (global-linum-mode 1)
 (line-number-mode 1)
 (column-number-mode 1)
