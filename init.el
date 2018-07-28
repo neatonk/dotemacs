@@ -81,6 +81,7 @@
           paredit
           popup
           rainbow-delimiters
+          rust-mode
           scss-mode
           smex
           web-mode
