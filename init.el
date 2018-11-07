@@ -75,6 +75,7 @@
           dockerfile-mode
           el-get
           git-modes
+          js2-mode
           magit
           markdown-mode
           nginx-mode
