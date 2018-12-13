@@ -85,6 +85,7 @@
           rust-mode
           scss-mode
           smex
+          toml-mode
           web-mode
           xcscope
           yaml-mode
