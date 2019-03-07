@@ -26,3 +26,4 @@ swank/*
 /cider-repl-history
 /elpa/
 /smex-items
+/opam-user-setup.el
