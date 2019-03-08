@@ -32,7 +32,7 @@
 
 ;; Use Emacs 24 color themes
 (load-theme 'zenburn t)
-(set-face-background 'show-paren-match-face "black")
+;;(set-face-background 'show-paren-match-face "black")
 
 ;; disable *-bar-modes
 (menu-bar-mode -1)
