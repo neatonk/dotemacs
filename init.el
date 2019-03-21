@@ -73,6 +73,7 @@
           clojure-mode
           dockerfile-mode
           el-get
+          exec-path-from-shell
           git-modes
           js2-mode
           magit
@@ -107,6 +108,8 @@
   ;; Synchronously install selected packages
   (el-get 'sync user-el-get-packages))
 
+;; fix PATH, MANPATH, etc.
+(exec-path-from-shell-initialize)
 
 ;; always load user init file
 (user-load "init.el")
