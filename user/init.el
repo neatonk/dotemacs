@@ -67,10 +67,9 @@
  cperl-continued-statement-offset 4
  cperl-indent-level 4
  cperl-indent-parens-as-block t
+ cperl-indent-subs-specially nil
  cperl-tab-always-indent t
  )
-
-(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Web stuff...
@@ -87,3 +86,8 @@
   (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
   ;;(setq web-mode-sql-indent-offset n)
   (setq css-indent-offset n))            ; css-mode
+
+
+;; EOF
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq magit-last-seen-setup-instructions "1.4.0")

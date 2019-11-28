@@ -71,6 +71,7 @@
         '(ac-cider
           auto-complete
           clojure-mode
+          cperl-mode
           dockerfile-mode
           el-get
           exec-path-from-shell

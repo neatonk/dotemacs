@@ -27,3 +27,4 @@ swank/*
 /elpa/
 /smex-items
 /opam-user-setup.el
+/transient/
