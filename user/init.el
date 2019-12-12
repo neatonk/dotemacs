@@ -12,6 +12,19 @@
               indent-tabs-mode nil
               tab-width 4)
 
+;; Highlight tabs trailing, whitespace, long lines, and tab marks.
+(global-whitespace-mode 1)
+(setq-default
+ whitespace-style
+ '(face
+   trailing
+   tabs
+   lines-tail
+   empty
+   space-after-tab
+   space-before-tab))
+
+
 (blink-cursor-mode 0)
 (global-linum-mode 1)
 (line-number-mode 1)
