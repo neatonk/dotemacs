@@ -13,7 +13,7 @@
               tab-width 4)
 
 ;; Highlight tabs trailing, whitespace, long lines, and tab marks.
-(global-whitespace-mode 1)
+;; (global-whitespace-mode 1)
 (setq-default
  whitespace-style
  '(face
